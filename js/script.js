@@ -69,12 +69,16 @@ var container = document.getElementById('quiz_questions');
 var active = document.getElementById('question_id'); 
 var correct = document.getElementById('correct_number');
 
+
+
+document.querySelector('.btn-next').addEventListener('click', function(){
+	if()
+	increaseScore();
+	showNext();
+});
+
 function showNext () {	
 	var currentQuestion = +active.value;
-
-	if (document.querySelector('input:checked').getAttribute('value') == correct.getAttribute('value')) {
-		increaseScore();
-	}
 
 	if (currentQuestion === allQuestions.length) {
 		showFinalScore();
@@ -85,6 +89,7 @@ function showNext () {
 	container.removeChild(document.querySelector('.q-' + currentQuestion));
 	container.appendChild(generateQuestionItem(allQuestions[currentQuestion], currentQuestion+1));
 	
+
 	active.setAttribute('value', currentQuestion+1);
 	container.style.display = 'block';
 }
