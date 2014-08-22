@@ -15,7 +15,7 @@ var allQuestions = [
 			"David Cameron", 
 			"Barac Obama"
 		], 
-		correctAnswer: 2
+		correctAnswer: 1
 	},
 	{
 		question: "Who is Yanukovich?", 
@@ -31,12 +31,11 @@ var allQuestions = [
 ];
 
 function generateQuestionItem (itemQ, number) {
-
 	var item = document.createElement('form');
-	item.class = 'question-item q-'+number;
+	item.setAttribute('class', 'question-item q-' + number);
 
 	var text = document.createElement('p');
-	text.class = 'question-text';
+	text.setAttribute('class', 'question-text');
 	text.innerHTML = itemQ.question;
 
 	var choices = document.createElement('p');
@@ -45,31 +44,72 @@ function generateQuestionItem (itemQ, number) {
 	for (var i = 0; i < itemQ.choices.length; i++) {
 
 		var answer = document.createElement('label');
-		answer.class = 'answer';
+		answer.setAttribute('class', 'answer');
 		answer.innerHTML = itemQ.choices[i];
 
 		var choice = document.createElement('input');
 		choice.setAttribute('type', 'radio');
 		choice.setAttribute('name', 'q-' + number);	
+		choice.setAttribute('value', i);	
 
-		answer.appendChild(choice);
+		answer.insertBefore(choice, answer.firstChild);
 		choices.appendChild(answer);
 	};
 
-	item.appendChild(text).appendChild(choices);
+	item.appendChild(text);
+	item.appendChild(choices);
+
+	correct.setAttribute('value', itemQ.correctAnswer);
+
+	return item;
 }
 
-function showNext () {
-	var container = document.getElementById('quiz_questions');
-	var active = +document.getElementById('question_id');
 
-	container.style.display = none;
+var container = document.getElementById('quiz_questions');
+var active = document.getElementById('question_id'); 
+var correct = document.getElementById('correct_number');
 
-	container.
-	console.log("test");
+function showNext () {	
+	var currentQuestion = +active.value;
+
+	if (document.querySelector('input:checked').getAttribute('value') == correct.getAttribute('value')) {
+		increaseScore();
+	}
+
+	if (currentQuestion === allQuestions.length) {
+		showFinalScore();
+		return;
+	}
+
+	container.style.display = 'none';
+	container.removeChild(document.querySelector('.q-' + currentQuestion));
+	container.appendChild(generateQuestionItem(allQuestions[currentQuestion], currentQuestion+1));
+	
+	active.setAttribute('value', currentQuestion+1);
+	container.style.display = 'block';
 }
 
 function increaseScore(){
 	var score = document.getElementById('total_score');
-	score.value = +score.value + 1;
+	console.log(score);
+	console.log(score.textContent);
+	score.innerHTML = +score.textContent + 1;
+}
+
+function showFinalScore(){
+	var congrats = document.createElement('div');
+	congrats.setAttribute('class', 'congratulations-block');
+	var message = document.createElement('p');
+	message.innerHTML = 'Congratulations! Your score is '
+
+	var score = document.createElement('b');
+	score.innerHTML = document.getElementById('total_score').textContent;
+
+	message.appendChild(score);
+	congrats.appendChild(message);
+	container.appendChild(congrats);
+
+	container.removeChild(document.querySelector('.q-' + active.value));
+	document.querySelector('.user-score').style.display = 'none';
+	document.querySelector('.btn-next').style.display = 'none';
 }
