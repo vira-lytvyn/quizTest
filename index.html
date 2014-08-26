@@ -6,7 +6,43 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	
+	<header>
+		<h1>Quiz creator</h1>
+	</header>
+	<section class="question-creator">
+		<h2>Question creator</h2>
+		<form class="form-question-content" action="#">
+			<fieldset class="questions">
+				<label for="question-content">Enter question:</label>
+				<input type="text" id="question-content">
+				<input type="button" id="question-content-submit" value="Add new question">
+			</fieldset>
+			<fieldset class="answers">
+				<p>Enter answers:</p>
+				<ul>
+					<li>
+						<input type="text" id="answer-content">
+						<label for="correct-answer">Check if this answer is correct</label>
+						<input type="radio" class="correct-answer">
+					</li>
+				</ul>
+				<input type="button" id="answer-content-submit" value="Add new answer">
+			</fieldset>
+			<input type="button" value="Save question" id="save">
+		</form>
+	</section>
+	<section class="question-preview">
+		<h2>Question preview</h2>
+		<span id="prev-question">Some question</span>
+		<ul>
+			<li><span class="prev-answers">Some answer</span></li>
+			<li><span class="prev-answers correct">Correct answer</span></li>
+		</ul>
+		<input type="button" value="Show previous question" id="show-previous">
+		<!-- Button with id "edit" will be able for click only in case when current question was saved -->
+		<input type="button" value="Edit this question" id="edit"> 
+		<input type="button" value="Show quiz in new window" id="show">
+	</section>
 	<script src="js/script.js"></script>
 </body>
 </html>
