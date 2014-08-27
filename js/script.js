@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
-		saveQuestion();
+		saveQuestion(createQuestionItem());
 	});
 });
 
@@ -124,15 +124,31 @@ function Input() {
 		return input;
 	}
 }
-	function TextInput() {
-		return this.init('text', 'question-text');
-	}
-	TextInput.prototype = new Input();
+function TextInput() {
+	return this.init('text', 'question-text');
+}
+TextInput.prototype = new Input();
 
-	function RadioInput() {
-		var label = $('<label>').text(' Check if this answer is correct ')
-			.append(this.init('radio', 'correct-answer'));
+function RadioInput() {
+	var label = $('<label>').text(' Check if this answer is correct ')
+		.append(this.init('radio', 'correct-answer'));
 
-		return label;
-	}
-	RadioInput.prototype = new Input();
+	return label;
+}
+RadioInput.prototype = new Input();
+
+
+// function for generation question object
+
+function createQuestionItem () {
+    var question = {};
+
+    question.title = $('.question-content').val();
+    $.each($('.answer-content'), function(index, choice) {
+    	console.log(choice);
+         console.log(index, choice.val());
+         console.log(choice.parent().find('.correct-answer').checked);
+    });
+
+    return question;
+}
