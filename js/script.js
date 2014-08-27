@@ -111,6 +111,7 @@ function createNewChoiseField() {
 	container = $('<li>').append(textInput, radioInput);
 
 	$('.answers-container').append(container);
+	$('input[name="question-text"]').addClass("answer-content");
 }
 
 function Input() {
