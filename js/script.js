@@ -36,7 +36,12 @@ var quiz = {
 jQuery(document).ready(function($) {
 	$('.question-preview').on('click', '#show', generateQuiz);
 	$('#question-content-submit').on('click', showQuizChoices);
-	$('#answer-content-submit').on('click', createNewChoiseField)
+	$('#answer-content-submit').on('click', createNewChoiseField);
+
+	$('.form-question-content').on('click', '#save', function(event) {
+		event.preventDefault();
+		saveQuestion();
+	});
 });
 
 function generateQuiz () {
