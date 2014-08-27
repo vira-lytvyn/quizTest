@@ -1,5 +1,5 @@
-function doesQuizExist(name) {
-    return localStorage.getItem(name) !== null;
+function doesQuizExist() {
+    return localStorage.getItem('quizQuestions') !== null;
 }
 
 function saveQuestion (question) {
@@ -33,9 +33,9 @@ function saveQuestion (question) {
 }
 
 function getQuestions () {
-    if (true) {
+    if (doesQuizExist()) {
         var questions = JSON.parse(localStorage.getItem('quizQuestions'));
-        console.log(questions);
+        generateQuiz(questions);
     } else {
         alert('Sorry, you\'ve saved no one question for your quiz.');
     }
