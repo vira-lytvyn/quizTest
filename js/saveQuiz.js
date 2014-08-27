@@ -2,7 +2,7 @@ function doesQuizExist(name) {
     return localStorage.getItem(name) !== null;
 }
 
-function saveQuestion (qestion) {
+function saveQuestion (question) {
     var savedQuestions = JSON.parse(localStorage.getItem('quizQuestions')) || [];
     try {
         if (savedQuestions.indexOf(question) !== -1) {

@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
 
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
-		//saveQuestion(createQuestionItem());
+		saveQuestion(createQuestionItem());
 	});
 });
 
@@ -155,15 +155,16 @@ function createQuestionItem () {
     var question = {};
 
     question.title = $('.question-content').val();
-    var choices = $('.answer-content');
-    console.log(choices);
-    $.each(choices, function(index, choice) {
-    	question.choices.push($(choice).val());
-    	console.log($(choice).find('.correct-answer').checked);
-    	if ($(choice).find('.correct-answer').checked) {
+    question.choices = [];
+    var answers = $('.answer-content');
+    $.each(answers, function(index, answer) {
+    	question.choices.push($(answer).val());
+    	if ($(answer).parent().find('.correct-answer').is(':checked')) {
     		question.correctAnswer = index;
     	}         
     });
+
+    console.log(question);
 
     return question;
 }
