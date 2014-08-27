@@ -47,6 +47,7 @@ jQuery(document).ready(function($) {
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
 		saveQuestion(createQuestionItem());
+		clearQuestionForm();
 	});
 });
 
@@ -197,3 +198,11 @@ function Validate() {
 	}
 }
 var validate = new Validate();
+
+function clearQuestionForm () {
+	$('.answers').removeClass('active');
+	$('.answers-container li').slice(1).remove();
+	$('.correct-answer').prop('checked', false);
+	$('.answer-content').val('');
+	$('#question-content').val('');
+}
