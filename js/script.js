@@ -59,7 +59,7 @@ function generateQuiz () {
 	'	<head>'+
 	'		<meta charset="UTF-8">'+
 	'		<title>'+ quiz.quizTitle +'</title>'+
-	'		<link rel="stylesheet" href="css/style.css">'+
+	'		<link rel="stylesheet" href="css/quizStyle.css">'+
 	'	</head>'+
 	'	<body>'+
 	'		<h1 class="quiz-title">' + quiz.quizTitle + '</h1>'+ form +
@@ -111,6 +111,7 @@ function createNewChoiseField() {
 	container = $('<li>').append(textInput, radioInput);
 
 	$('.answers-container').append(container);
+	$('input[name="question-text"]').addClass("answer-content");
 }
 
 function Input() {
