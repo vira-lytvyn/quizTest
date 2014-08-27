@@ -35,6 +35,8 @@ var quiz = {
 
 jQuery(document).ready(function($) {
 	$('.question-preview').on('click', '#show', generateQuiz);
+	$('#question-content-submit').on('click', showQuizChoices);
+	$('#answer-content-submit').on('click', createNewChoiseField)
 });
 
 function generateQuiz () {
@@ -83,3 +85,48 @@ function generateQuestion(question, number) {
 
 	return item;
 }
+/*
+* Andy's code
+*/
+function showQuizChoices() {
+	if ($(this).prev().val() !== '') {
+		$('.answers').addClass('active');
+	} else {
+		alert('Please input question text!');
+	}
+}
+
+function createNewChoiseField() {
+	var container, textInput, radioInput;
+
+	textInput = new TextInput();
+	radioInput = new RadioInput();
+
+	container = $('<li>').append(textInput, radioInput);
+
+	$('.answers-container').append(container);
+}
+
+function Input() {
+	var input;
+	this.init = function(inputType, inputName) {
+		input = $('<input>').attr({
+			type: inputType,
+			name: inputName
+		});
+
+		return input;
+	}
+}
+	function TextInput() {
+		return this.init('text', 'question-text');
+	}
+	TextInput.prototype = new Input();
+
+	function RadioInput() {
+		var label = $('<label>').text(' Check if this answer is correct ')
+			.append(this.init('radio', 'correct-answer'));
+
+		return label;
+	}
+	RadioInput.prototype = new Input();

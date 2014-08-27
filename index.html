@@ -19,11 +19,13 @@
 			</fieldset>
 			<fieldset class="answers">
 				<p>Enter answers:</p>
-				<ul>
+				<ul class="answers-container">
 					<li>
 						<input type="text" id="answer-content">
-						<label for="correct-answer">Check if this answer is correct</label>
-						<input type="radio" class="correct-answer">
+						<label>
+							Check if this answer is correct
+							<input type="radio" name="correct-answer">
+						</label>
 					</li>
 				</ul>
 				<input type="button" id="answer-content-submit" value="Add new answer">

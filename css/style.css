@@ -1,0 +1,7 @@
+.answers {
+	display: none;
+}
+
+.answers.active {
+	display: block;
+}
