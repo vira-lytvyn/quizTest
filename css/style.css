@@ -6,6 +6,10 @@
 	display: block;
 }
 
+.status-message {
+	color: red;
+}
+
 body {
 	background: url("../img/background.jpg");
 	font-family: Verdana;

@@ -36,11 +36,17 @@ var quiz = {
 jQuery(document).ready(function($) {
 	$('.question-preview').on('click', '#show', generateQuiz);
 	$('#question-content-submit').on('click', showQuizChoices);
-	$('#answer-content-submit').on('click', createNewChoiseField);
+	$('#answer-content-submit').on('click', function() {
+		if(validate.prevChoice() === true) {
+			createNewChoiseField();
+		} else {
+			showMessage('Please fill last choise into form!');
+		}
+	});
 
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
-		saveQuestion(createQuestionItem());
+		//saveQuestion(createQuestionItem());
 	});
 });
 
@@ -95,11 +101,15 @@ function generateQuestion(question, number) {
 * Andy's code
 */
 function showQuizChoices() {
-	if ($(this).prev().val() !== '') {
+	if(validate.question() === true) {
 		$('.answers').addClass('active');
 	} else {
-		alert('Please input question text!');
+		showMessage('Please first enter your question!');		
 	}
+}
+
+function showMessage(message) {
+	$('.status-message').text(message);
 }
 
 function createNewChoiseField() {
@@ -116,17 +126,17 @@ function createNewChoiseField() {
 
 function Input() {
 	var input;
-	this.init = function(inputType, inputName) {
+	this.init = function(inputType, inputClass) {
 		input = $('<input>').attr({
 			type: inputType,
-			name: inputName
+			class: inputClass
 		});
 
 		return input;
 	}
 }
 function TextInput() {
-	return this.init('text', 'question-text');
+	return this.init('text', 'answer-content');
 }
 TextInput.prototype = new Input();
 
@@ -153,3 +163,32 @@ function createQuestionItem () {
 
     return question;
 }
+
+function Validate() {
+	this.question = function () {
+		if($('#question-content').val() !== '') {
+			return true			
+		} else {
+			return false
+		}
+	}
+
+	this.radioButtons = function () {
+		var checkbox = $(".answers input:radio:checked");
+		if(checkbox.length > 0) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	this.prevChoice = function () {
+		var element = $('.answers-container li:last-child .answer-content');
+ 		if(element.val() == '') {
+			return false
+		} else {
+			return true
+		}
+	}
+}
+var validate = new Validate();
