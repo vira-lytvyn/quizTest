@@ -145,10 +145,14 @@ function createQuestionItem () {
     var question = {};
 
     question.title = $('.question-content').val();
-    $.each($('.answer-content'), function(index, choice) {
-    	console.log(choice);
-         console.log(index, choice.val());
-         console.log(choice.parent().find('.correct-answer').checked);
+    var choices = $('.answer-content');
+    console.log(choices);
+    $.each(choices, function(index, choice) {
+    	question.choices.push($(choice).val());
+    	console.log($(choice).find('.correct-answer').checked);
+    	if ($(choice).find('.correct-answer').checked) {
+    		question.correctAnswer = index;
+    	}         
     });
 
     return question;

@@ -44,15 +44,3 @@ function getQuestions () {
 function exportFromLocalStorageToJSON (questions) {
     console.log(questions);
 }
-
-function createQuestionItem () {
-    var question = {};
-
-    question.title = $('.question-content').val();
-    $.each($('.answer-content'), function(index, choice) {
-         console.log(index, choice.val());
-         console.log(choice.parent().find('.correct-answer').checked);
-    });
-
-    return question;
-}
