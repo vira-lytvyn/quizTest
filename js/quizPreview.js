@@ -14,7 +14,10 @@ function generateQuiz (quiz) {
 	'		<link rel="stylesheet" href="css/quizStyle.css">'+
 	'	</head>'+
 	'	<body>'+
-	'		<h1 class="quiz-title">Test quiz</h1>'+ form +
+	'		<h1 class="quiz-title">Test quiz</h1>'+
+	'<input type="button" value="Edit ability: off" class="admin-buttons">' +
+	'<input type="button" value="Download JSON" class="admin-buttons">'
+			+ form +
 	'	</body>'+
 	'</html>';
 
@@ -27,13 +30,17 @@ function generateQuestion(question, number) {
 		choices += ''+
 		'<li class="question-choice">'+
 		'	<label class="choice-item">'+
+		'		<input type="button" value="Edit" id="edit-choice" class="edit-choice">' +
+		'		<input type="button" value="Delete" id="delete-choice" class="delete-choice">' +
 		'		<input type="radio" name="question-'+ number +'">'+	question.choices[i] +
-		'	</label>'+
+		'	</label>'+ 
 		'</li>';
 	}
 	var item = ''+
 	'<div class="question-item">'+
-	'	<h3 class="question-text">'+ question.title +'</h3>'+
+	'	<h3 class="question-text">'+ question.title +'</h3>'+ 
+	'	<input type="button" value="Edit" id="edit-question" class="edit-question">' +
+	'	<input type="button" value="Delete" id="delete-question" class="delete-question">' +
 	'	<ul class="question-choices">' + choices + '</ul>'+
 	'</div>';
 	return item;
