@@ -1,6 +1,14 @@
 jQuery(document).ready(function($) {
 	$('.question-preview').on('click', '#show', getQuestions);
-	$('#question-content-submit').on('click', showQuizChoices);
+	$('#question-content-submit').on('click', function() {
+		if(validate.question() === true) {
+			showQuizChoices();
+			createNewChoiseField();
+		} else {
+			showMessage('Please first enter your question!');		
+		}
+
+	});
 	$('#answer-content-submit').on('click', function() {
 		if(validate.prevChoice() === true) {
 			createNewChoiseField();
@@ -26,11 +34,7 @@ jQuery(document).ready(function($) {
 * Andy's code
 */
 function showQuizChoices() {
-	if(validate.question() === true) {
-		$('.answers').addClass('active');
-	} else {
-		showMessage('Please first enter your question!');		
-	}
+	$('.answers').addClass('active');
 }
 
 function showMessage(message) {
