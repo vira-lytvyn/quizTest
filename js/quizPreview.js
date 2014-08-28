@@ -12,11 +12,14 @@ function generateQuiz (quiz) {
 	'		<meta charset="UTF-8">'+
 	'		<title>Test quiz</title>'+
 	'		<link rel="stylesheet" href="css/quizStyle.css">'+
+	' 		<script src="js/editAbility.js"></script>' +
+	'		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>' +
 	'	</head>'+
 	'	<body>'+
 	'		<h1 class="quiz-title">Test quiz</h1>'+
-	'<input type="button" value="Edit ability: off" class="admin-buttons">' +
-	'<input type="button" value="Download JSON" class="admin-buttons">'
+	'		<input type="button" value="Edit ability: off" id="edit-ability" class="admin-buttons">' +
+	'		<input type="button" value="Download JSON" class="admin-buttons">' +
+	' 		<script src="js/editAbility.js"></script>'
 			+ form +
 	'	</body>'+
 	'</html>';
