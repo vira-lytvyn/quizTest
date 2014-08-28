@@ -11,8 +11,12 @@ jQuery(document).ready(function($) {
 
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
-		saveQuestion(createQuestionItem());
-		clearQuestionForm();
+		if(validate.radioButtons()) {
+			saveQuestion(createQuestionItem());
+			clearQuestionForm();
+		} else {
+			showMessage('Please choose correct answer!');
+		}
 	});
 });
 
@@ -90,7 +94,7 @@ function createQuestionItem () {
 
 function Validate() {
 	this.question = function () {
-		if($('#question-content').val() !== '') {
+		if($('#question-content').val()) {
 			return true			
 		} else {
 			return false
@@ -108,7 +112,7 @@ function Validate() {
 
 	this.prevChoice = function () {
 		var element = $('.answers-container li:last-child .answer-content');
- 		if(element.val() == '') {
+ 		if(!element.val()) {
 			return false
 		} else {
 			return true
