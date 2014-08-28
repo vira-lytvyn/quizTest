@@ -18,6 +18,8 @@ jQuery(document).ready(function($) {
 			showMessage('Please choose correct answer!');
 		}
 	});
+
+	$('.delete-choice').on('click', deleteChoice);
 });
 
 /*
@@ -33,15 +35,20 @@ function showQuizChoices() {
 
 function showMessage(message) {
 	$('.status-message').text(message);
+	setTimeout(hideMessage, 4000);
 }
+	function hideMessage() {
+		$('.status-message').text('');
+	}
 
 function createNewChoiseField() {
-	var container, textInput, radioInput;
+	var container, textInput, radioInput, deleteButton;
 
 	textInput = new TextInput();
 	radioInput = new RadioInput();
+	deleteButton = new DeleteButton();
 
-	container = $('<li>').append(textInput, radioInput);
+	container = $('<li>').append(textInput, radioInput, deleteButton);
 
 	$('.answers-container').append(container);
 	$('input[name="question-text"]').addClass("answer-content");
@@ -55,7 +62,7 @@ function Input() {
 			class: inputClass
 		});
 
-		return input;
+		return input
 	}
 }
 function TextInput() {
@@ -67,10 +74,18 @@ function RadioInput() {
 	var label = $('<label>').text(' Check if this answer is correct ')
 		.append(this.init('radio', 'correct-answer'));
 
-	return label;
+	return label
 }
 RadioInput.prototype = new Input();
 
+function DeleteButton() {
+	var link = $('<a>').text('Delete')
+		.attr('href', '#')
+		.addClass('delete-choice')
+		.click(deleteChoice);
+
+	return link
+}
 
 // function for generation question object
 
@@ -93,7 +108,7 @@ function createQuestionItem () {
 }
 
 function Validate() {
-	this.question = function () {
+	this.question = function() {
 		if($('#question-content').val()) {
 			return true			
 		} else {
@@ -101,7 +116,7 @@ function Validate() {
 		}
 	}
 
-	this.radioButtons = function () {
+	this.radioButtons = function() {
 		var checkbox = $(".answers input:radio:checked");
 		if(checkbox.length > 0) {
 			return true
@@ -110,7 +125,7 @@ function Validate() {
 		}
 	}
 
-	this.prevChoice = function () {
+	this.prevChoice = function() {
 		var element = $('.answers-container li:last-child .answer-content');
  		if(!element.val()) {
 			return false
@@ -121,10 +136,19 @@ function Validate() {
 }
 var validate = new Validate();
 
-function clearQuestionForm () {
+function clearQuestionForm() {
 	$('.answers').removeClass('active');
 	$('.answers-container li').slice(1).remove();
 	$('.correct-answer').prop('checked', false);
 	$('.answer-content').val('');
 	$('#question-content').val('');
+}
+
+function deleteChoice() {
+	var choiceContainer = $(this).closest('li');
+	if(choiceContainer.parent().children().length > 1) {
+		choiceContainer.remove();
+	} else {
+		showMessage('You may have more then one choice to delete.')
+	}
 }
