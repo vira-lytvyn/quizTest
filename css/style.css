@@ -134,3 +134,14 @@ h2 {
 .answers.active {
 	display: block;
 }
+
+.reset-answers {
+	border: 0px;
+	border-radius: 5px;
+	background: #59ABE3;
+	height: 28px;
+	width: 110px;
+	color: white;
+	margin-right: 25px;
+	margin-top: 1%;
+}
