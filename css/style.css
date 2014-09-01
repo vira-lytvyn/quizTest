@@ -58,7 +58,7 @@ h2 {
 	
 }
 
-.question-content, .answer-content {
+.question-content, .answer-content, .quiz-title {
 	border: 0px;
 	border-radius: 5px;
 	height: 25px;
