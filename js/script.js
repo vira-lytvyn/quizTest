@@ -19,11 +19,12 @@ jQuery(document).ready(function($) {
 
 	$('.form-question-content').on('click', '#save', function(event) {
 		event.preventDefault();
-		if(validate.radioButtons()) {
+
+		if(validate.radioButtons() && validate.prevChoice()) {
 			saveQuestion(createQuestionItem());
 			clearQuestionForm();
 		} else {
-			showMessage('Please choose correct answer!');
+			showMessage('Please choose correct answer, or delete empty field!');
 		}
 	});
 
