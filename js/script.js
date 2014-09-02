@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-	$('.question-preview').on('click', '#show', getQuestions);
+	$('.question-preview').on('click', '#show', getQuiz);
 	$('#question-content-submit').on('click', function() {
 		if(validate.question() === true) {
 			showQuizChoices();
@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 
 		if(validate.radioButtons() && validate.prevChoice()) {
-			saveQuestion(createQuestionItem());
+			saveQuestionToQuiz(createQuestionItem());
 			clearQuestionForm();
 		} else {
 			showMessage('Please choose correct answer, or delete empty field!');

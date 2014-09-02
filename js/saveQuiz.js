@@ -1,9 +1,10 @@
-function doesQuizExist() {
-    return localStorage.getItem('quizQuestions') !== null;
+function doesQuizExist(name) {
+    return localStorage.getItem(name) !== null;
 }
 
-function saveQuestion (question) {
-    var savedQuestions = JSON.parse(localStorage.getItem('quizQuestions')) || [];
+function saveQuestionToQuiz (question, quiz) {
+    var test = quiz || $('#quiz-title').val();
+    var savedQuestions = JSON.parse(localStorage.getItem(test)) || [];
     try {
         if (savedQuestions.indexOf(question) !== -1) {
             if (confirm('Such question is already saved. \nWould you like to edit it?')) {
@@ -17,12 +18,12 @@ function saveQuestion (question) {
                 return false;
             } else if (confirm('Would you like to export all saved questions to JSON file and then remove them?')) {
                 exportFromLocalStorageToJSON(savedQuestions);
-                localStorage.removeItem('quizQuestions');
+                localStorage.removeItem(test);
                 return false;
             } 
         } else {
             savedQuestions.push(question);
-            localStorage.setItem('quizQuestions', JSON.stringify(savedQuestions));
+            localStorage.setItem(test, JSON.stringify(savedQuestions));
             alert('Question was successfully saved. You can view it in your localStorage.');
             return true;
         }
@@ -32,15 +33,12 @@ function saveQuestion (question) {
     }
 }
 
-function getQuestions () {
-    if (doesQuizExist()) {
-        var questions = JSON.parse(localStorage.getItem('quizQuestions'));
-        generateQuiz(questions);
+function getQuiz () {
+    var name = $('#quiz-title').val();
+    if (doesQuizExist(name)) {
+        var questions = JSON.parse(localStorage.getItem(name));
+        generateQuiz(name, questions);
     } else {
         alert('Sorry, you\'ve saved no one question for your quiz.');
     }
-}
-
-function exportFromLocalStorageToJSON (questions) {
-    console.log(questions);
 }

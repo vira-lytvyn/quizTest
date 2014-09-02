@@ -1,7 +1,7 @@
-function generateQuiz (quiz) {
+function generateQuiz (quiz, questions) {
 	var form = '<form class="quiz-form" id="quizForm">';
-	for (var i = 0, len = quiz.length; i < len; i++) {
-		form += generateQuestion(quiz[i], i);
+	for (var i = 0, len = questions.length; i < len; i++) {
+		form += generateQuestion(questions[i], i);
 	};		
 	form += '</form>';
 
@@ -10,13 +10,13 @@ function generateQuiz (quiz) {
 	'<html>'+
 	'	<head>'+
 	'		<meta charset="UTF-8">'+
-	'		<title>Test quiz</title>'+
+	'		<title>'+ quiz +'</title>'+
 	'		<link rel="stylesheet" href="css/quizStyle.css">'+
 	' 		<script src="js/editAbility.js"></script>' +
 	'		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>' +
 	'	</head>'+
 	'	<body>'+
-	'		<h1 class="quiz-title">Test quiz</h1>'+
+	'		<h1 class="quiz-title">'+ quiz +'z</h1>'+
 	'		<input type="button" value="Edit ability: off" id="edit-ability" class="admin-buttons">' +
 	'		<input type="button" value="Download JSON" class="admin-buttons">' +
 	' 		<script src="js/editAbility.js"></script>'
