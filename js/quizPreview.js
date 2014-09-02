@@ -5,22 +5,26 @@ function generateQuiz (quiz, questions) {
 	};		
 	form += '</form>';
 
+	var json = JSON.stringify(questions);
+	var blob = new Blob([json], {type: "application/json"});
+	var url  = URL.createObjectURL(blob);
+
 	var quizPreview = window.open('');
 	var content = ''+
 	'<html>'+
 	'	<head>'+
 	'		<meta charset="UTF-8">'+
 	'		<title>'+ quiz +'</title>'+
-	'		<link rel="stylesheet" href="css/quizStyle.css">'+
-	' 		<script src="js/editAbility.js"></script>' +
+	'		<link rel="stylesheet" href="css/quizStyle.css">'+	
 	'		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>' +
+	' 		<script src="js/script.js"></script>' +
+	' 		<script src="js/editAbility.js"></script>' +
+	' 		<script src="js/formatsConverter.js"></script>' +
 	'	</head>'+
 	'	<body>'+
 	'		<h1 class="quiz-title">'+ quiz +'z</h1>'+
 	'		<input type="button" value="Edit ability: off" id="edit-ability" class="admin-buttons">' +
-	'		<input type="button" value="Download JSON" class="admin-buttons">' +
-	' 		<script src="js/editAbility.js"></script>'
-			+ form +
+	'		<a class="admin-buttons" id="download" download="'+ quiz + '.json' +'" href="'+ url +'">Download JSON</a>' + form +
 	'	</body>'+
 	'</html>';
 

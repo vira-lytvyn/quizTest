@@ -33,7 +33,7 @@ function saveQuestionToQuiz (question, quiz) {
     }
 }
 
-function getQuiz () {
+function showQuiz () {
     var name = $('#quiz-title').val();
     if (doesQuizExist(name)) {
         var questions = JSON.parse(localStorage.getItem(name));

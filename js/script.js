@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
-	$('.question-preview').on('click', '#show', getQuiz);
+	$('.question-preview').on('click', '#show', showQuiz)
+						  .on('click', '#upload', exportFromJSONToLocalStorage);
 	$('#question-content-submit').on('click', function() {
 		if(validate.question() === true) {
 			showQuizChoices();
