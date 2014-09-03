@@ -80,7 +80,7 @@ function TextInput() {
 TextInput.prototype = new Input();
 
 function RadioInput() {
-	var label = $('<label>').text(' Check if this answer is correct ')
+	var label = $('<label>').text('')
 		.append(this.init('radio', 'correct-answer'));
 
 	return label
@@ -88,7 +88,7 @@ function RadioInput() {
 RadioInput.prototype = new Input();
 
 function DeleteButton() {
-	var link = $('<a>').text('Delete')
+	var link = $('<a>').text('X')
 		.attr('href', '#')
 		.addClass('delete-choice')
 		.click(deleteChoice);
