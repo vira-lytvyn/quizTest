@@ -12,8 +12,8 @@
 		<h1 class="logo">QuizZzy</h1>
 		<span class="header-text">Your platform for quiz creation!</span>
 		<input type="button" value="Create quiz" id="create-quiz" class="main-buttons white" onclick="window.location.href='index.html'">
+		<input type="file" accept=".json" id="loaded-json" class="hidden-btn">
 		<input type="button" value="Upload quiz" id="upload-quiz" class="main-buttons">
-
 	</header>
 
 	<section class="quiz-list">
@@ -36,5 +36,11 @@
 			<span class="quiz-description">No description</span>
 		</div>
 	</section>
+
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>	
+	<script type="text/javascript" src="js/quizPreview.js"></script>
+	<script src="js/script.js"></script>
+	<script type="text/javascript" src="js/saveQuiz.js"></script>
+	<script type="text/javascript" src="js/formatsConverter.js"></script>
 </body>
 </html>

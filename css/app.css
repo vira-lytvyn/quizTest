@@ -141,5 +141,8 @@ body {
 	float: left;
 }
 
-
-
+.hidden-btn {
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

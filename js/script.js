@@ -1,6 +1,10 @@
 jQuery(document).ready(function($) {
-	$('.question-preview').on('click', '#show', showQuiz)
-						  .on('click', '#upload', exportFromJSONToLocalStorage);
+	$('.question-preview').on('click', '#show', showQuiz);
+	$('#upload-quiz').on('click', function(event) {
+		event.preventDefault();
+		$('#loaded-json').click();
+	});
+	$('#loaded-json').on('change', exportFromJSON);
 	$('#question-content-submit').on('click', function() {
 		if(validate.question() === true) {
 			showQuizChoices();
@@ -8,7 +12,6 @@ jQuery(document).ready(function($) {
 		} else {
 			showMessage('Please first enter your question!');		
 		}
-
 	});
 	$('#answer-content-submit').on('click', function() {
 		if(validate.prevChoice() === true) {
@@ -43,9 +46,9 @@ function showMessage(message) {
 	$('.status-message').text(message);
 	setTimeout(hideMessage, 4000);
 }
-	function hideMessage() {
-		$('.status-message').text('');
-	}
+function hideMessage() {
+	$('.status-message').text('');
+}
 
 function createNewChoiseField() {
 	var container, textInput, radioInput, deleteButton;
