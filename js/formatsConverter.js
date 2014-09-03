@@ -1,14 +1,14 @@
 function exportFromJSON () {
-	var file = this.files[0];
-	console.log('test');
-	console.log(file);
-	console.log(file.name);
+	var path = $(this).val();
+	var filemane = path.indexOf('\\') ? path.split('\\').pop() : path.split('/').pop() ;
+	console.log(filemane);
+	// var file = this.files[0];
 
-	if (!file.type.match('/*.json/')) {
-      continue;
-    }
-    console.log($.parseJSON(file));
-    var reader = new FileReader();
-    reader.onload = generateQuiz(file.name, $.parseJSON(file));
-    reader.readAsDataURL(file);
+	// var blob = new Blob([file], {type: "application/json"});
+	// saveAs(blob, "/user_quizes/" + filemane);
+
+	$.getJSON("./user_quizes/"+filemane, function(json) {
+	    console.log(json); 
+	    generateQuiz(filemane.split('.')[0], json);
+	});    
 }
