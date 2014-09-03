@@ -53,9 +53,9 @@ body {
 .main-buttons {
 	position: relative;
 	z-index: 3;
-	width: 10%;
+	width: 16%;
 	margin-top: 20px;
-	margin-left: 45%;
+	margin-left: 42%;
 	height: 45px;
 	border-radius: 10px;
 	border: 2px dotted #1BBC9B;

@@ -11,9 +11,10 @@
 }
 
 body {
-	background: url("../img/background.jpg");
+	background: #333;
 	font-family: Verdana;
 	min-width: 730px;
+	color: #1BBC9B;
 }
 
 h1 {
@@ -21,23 +22,30 @@ h1 {
 	font-size: 35px;
 	text-align: center;
 	padding: 10px;
+	width: 100%;
+	background: #1BBC9B;
+	font-weight: 900;
 }
 
 h2 {
+	margin-top: 1%;
 	font-size: 25px;
 	text-align: center;
 }
 
 .question-creator {
-	width: 96%;
+	width: 86%;
 	margin-top: 3%;
-	margin-left: 1%;
-	margin-right: 1%;
+	margin-left: 6%;
+	margin-right: 6%;
 	padding: 1%;
-	background: #90C695;
+	background: white;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow:    0px 0px 26px 0px rgba(0, 0, 0, 0.75);
+	box-shadow:         0px 0px 26px 0px rgba(0, 0, 0, 0.75);
 }
 
 .questions {
@@ -59,35 +67,36 @@ h2 {
 }
 
 .question-content, .answer-content, .quiz-title {
-	border: 0px;
+	border: 2px dotted #1BBC9B;
 	border-radius: 5px;
-	height: 25px;
+	height: 23px;
 	width: 400px;
 	margin-top: 1%;
+	color: #333;
+	padding-left: 5px;
 }
 
 .question-content:focus, .answer-content:focus,
 .question-content-submit, .answer-content-submit,
-.save {
+.save, .quiz-title {
 	outline: none;
 }
 
-.answer-content {
-	border: 1px solid #2C3E50;
-}
-
 .question-content-submit, .answer-content-submit {
-	border: 0px;
-	background: #2C3E50;
-	color: white;
+	border: 2px dotted #1BBC9B;
+	background: transparent;
+	color: #1BBC9B;
 	height: 28px;
 	border-radius: 5px;
 	margin: 1%;
 	cursor: pointer;
+	transition: 0.5s all;
 }
 
 .question-content-submit:hover, .answer-content-submit:hover {
-	background: #34495E;
+	background: #1BBC9B;
+	color: white;
+	border: 2px solid #1BBC9B;
 }
 
 .answer-content-submit {
@@ -96,7 +105,7 @@ h2 {
 }
 
 .save {
-	background: #2574A9;
+	background: #1BBC9B;
 	border: 0px;
 	height: 45px;
 	width: 100%;
@@ -104,25 +113,33 @@ h2 {
 	color: white;
 	margin-top: 1%;
 	cursor: pointer;
+	transition: 0.5s all;
 }
 
-.save:hover {
-	background: #1E8BC3;
+.save:hover, .reset-all:hover {
+	background: transparent;
+	border: 2px dotted #1BBC9B;
+	color: #1BBC9B;
 }
 
-.show {
-	width: 98%;
-	margin: 1%;
-	border: 0px;
-	background: #2574A9;
+.show, .upload {
+	width: 86%;
+	margin-left: 7%;
+	margin-right: 7%;
+	margin-top: 1%;
 	height: 40px;
 	border-radius: 5px;
-	color: white;
 	cursor: pointer;
+	background: transparent;
+	border: 2px dotted #1BBC9B;
+	color: #1BBC9B;
+	transition: 0.5s all;
 }
 
-.show:hover {
-	background: #1E8BC3;
+
+.show:hover, .upload:hover {
+	background: #1BBC9B;
+	color: white;
 }
 
 
@@ -138,20 +155,30 @@ h2 {
 .reset-all {
 	border: 0px;
 	border-radius: 5px;
-	background: #59ABE3;
+	background: #1BBC9B;
 	height: 40px;
 	width: 100%;
 	color: white;
 	margin-right: 25px;
 	margin-top: 1%;
 	cursor: pointer;
+	transition: 0.5s all;
 }
 
 .delete-choice {
 	border-radius: 5px;
-	background: #D24D57;
 	height: 20px;
 	width: 50px;
-	color: white;
+	color: #D24D57;
 	text-decoration: none;
+	font-family: monospace;
+	font-size: x-large;
+	font-weight: 900;
+}
+
+input[type="radio"] {
+padding: 10px;
+	height: 12px;
+	width: 12px;
+	cursor: pointer;
 }
