@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quizzzy</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+	<header class="page-top">
+		<div class="shadow"></div>
+		<h1 class="logo">QuizZzy</h1>
+		<span class="header-text">Your platform for quiz creation!</span>
+		<input type="button" value="Create quiz" id="create-quiz" class="main-buttons white" onclick="window.location.href='index.html'">
+		<input type="file" accept=".json" id="loaded-json" class="hidden-btn">
+		<input type="button" value="Upload quiz" id="upload-quiz" class="main-buttons">
+	</header>
+
+	<section class="quiz-list">
+		<div class="quiz-item">
+			<img src="img/js.png" alt="quiz-image" class="quiz-image">
+			<h3 class="quiz-title">Javascript for beginners</h3>
+			<span class="quiz-difficulty easy">Easy</span>
+			<span class="quiz-description">No description</span>
+		</div>
+		<div class="quiz-item">
+			<img src="img/html.png" alt="quiz-image" class="quiz-image">
+			<h3 class="quiz-title">HTML5</h3>
+			<span class="quiz-difficulty middle">Middle</span>
+			<span class="quiz-description">No description</span>
+		</div>
+		<div class="quiz-item">
+			<img src="img/css.jpg" alt="quiz-image" class="quiz-image">
+			<h3 class="quiz-title">Advanced CSS3</h3>
+			<span class="quiz-difficulty hard">Hard</span>
+			<span class="quiz-description">No description</span>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>	
+	<script type="text/javascript" src="js/quizPreview.js"></script>
+	<script src="js/script.js"></script>
+	<script type="text/javascript" src="js/saveQuiz.js"></script>
+	<script type="text/javascript" src="js/formatsConverter.js"></script>
+</body>
+</html>
