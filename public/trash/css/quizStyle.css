@@ -1,0 +1,45 @@
+body {
+	background: url("../img/background.jpg");
+	color: white;
+	font-family: Verdana;
+}
+
+.question-text {
+	display: inline;
+}
+
+.question-choice {
+	list-style-type: none;
+	width: 25%;
+}
+
+.edit-choice, .edit-question {
+	border: 0px;
+	border-radius: 5px;
+	background: #59ABE3;
+	height: 20px;
+	width: 50px;
+	color: white;
+	display: none;
+}
+
+.delete-choice, .delete-question {
+	border: 0px;
+	border-radius: 5px;
+	background: #D24D57;
+	height: 20px;
+	width: 50px;
+	color: white;
+	display: none;
+}
+
+.admin-buttons {
+	border: 0px;
+	border-radius: 5px;
+	background: #59ABE3;
+	height: 20px;
+	width: 110px;
+	color: white;
+	margin-right: 25px;
+}
+

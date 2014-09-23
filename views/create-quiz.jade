@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	div.wrapper
+		header
+			h1.title= title
+
+		form(method="post" action="create-new-quiz-route" class="new-quiz-form" name="new-quiz-form")
+			label.label-with-input
+				span.lable-text Quiz title: 
+				input(type="text" name="newQuizTitle" placeholder="quiz-title" required class="newQuizTitle white-input")
+
+			label.label-with-input
+				span.lable-text Quiz Description: 
+				input(type="text" name="newQuizDescription" placeholder="quiz-description" class="white-input")
+			
+			label.label-with-input
+				span.lable-text Quiz logo:
+				input(type="file" name="quizImgUpload")
+
+			div.mail-box
+			input(type="button" class="createQuizValidation" value="Create" class="button" accept="image/jpeg,image/png,image/gif")

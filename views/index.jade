@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	div.wrapper
+		header
+			h1.title= title
+		nav.main-nav
+			a(href='create-quiz' class="nav-button") Create new quiz
+			a(href='manage-quiz' class="nav-button") Upload quiz
+		section.quiz-list-container
+			h2.quiz-list-title Quiz list
+			ul.quiz-list-ul
+				each quiz, i in quizList
+					li.quiz-list-item
+						div.quiz-list-info-container
+							a(href="#" class="quiz-list-item-title")= quiz.title
+							span.quiz-list-description= quiz.description
+							span.quiz-list-count= quiz.questions.length
+						nav.quiz-list-controllers
+							a(href="/quiz/#{quiz._id}") Start test
+							a(href="/create-question&#{quiz._id}") Add new question
+							a(href="/delete-quiz&#{quiz._id}") Delete quiz
