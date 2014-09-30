@@ -1,0 +1,30 @@
+<div class="wrapper">
+	<header>
+		<h1 class="title">{{title}}</h1>
+	</header>
+
+	<nav class="main-nav">
+		<a href="#" id="create-quiz-home-button" class="nav-button">Create new quiz</a>
+		<a href="upload-quiz" class="nav-button">Upload quiz</a>
+	</nav>
+
+	<section class="quiz-list-container">
+		<h2 class="quiz-list-title">Quiz list</h2>
+		<ul class="quiz-list-ul">
+			 {{#quizData}}
+						<li {{data "quiz"}} class="quiz-list-item">
+							<div class="quiz-list-info-container">
+								<a href="#" class="quiz-list-item-title">{{title}}</a>
+								<span class="quiz-list-description">{{description}}</span>
+								<span class="quiz-list-count">{{questions.length}}</span>
+							</div>
+							<nav class="quiz-list-controllers">
+								<a href="#">Start test</a>
+								<a href="#">Add new question</a>
+								<a href="#">Delete quiz</a>
+							</nav>
+						</li>
+				{{/quizData}}
+		</ul>
+	</section>
+</div>

@@ -61,10 +61,10 @@ exports.createNewQuestion = function(req, res, id) {
 	});
 }
 
-exports.renderIndex = function(req, res) {
+exports.getAllQuizes = function(req, res) {
 	Quiz.find(function(err, docs) {
 		if(err) throw err
-  	res.render('index', { title: 'QuizZzy', quizList: docs });
+		res.send(docs);
 	});
 }
 

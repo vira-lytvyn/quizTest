@@ -65,7 +65,7 @@ body {
 
 .nav-button {
 	display: inline-block;
-	width: calc(50% - 10px);
+	width: calc(50% - 20px);
 	box-sizing: border-box;
 	text-align: center;
 	padding: 13px 0;
@@ -135,7 +135,7 @@ body {
 			box-sizing: border-box;
 			border-top: solid #4E8693 4px;
 			background: #FFF;
-			width: calc(33% - 7px);
+			width: calc(33% - 10px);
 			list-style: none;
 			display: inline-block;
 			margin: 5px;
@@ -221,7 +221,7 @@ body {
 
 @media screen and (min-width: 701px) and (max-width: 1024px) {
 	.quiz-list-item {
-		width: calc(50% - 10px);
+		width: calc(50% - 15px);
 	}	
 }
 
@@ -232,7 +232,6 @@ body {
 	}
 
 	.quiz-list-item {
-
 		width: calc(100% - 10px);
 	}
 }

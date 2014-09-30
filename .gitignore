@@ -23,3 +23,6 @@ build/Release
 
 # Grunt #
 /node_modules
+
+/bower_components
+/data

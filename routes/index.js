@@ -3,8 +3,8 @@ var router = express.Router();
 var quizDbMethods = require('../quizDb');
 
 
-router.get('/', function(req, res) {
-	quizDbMethods.renderIndex(req, res);
+router.get('/quizapi/getallquizes', function(req, res) {
+	quizDbMethods.getAllQuizes(req, res);
 });
 
 router.get('/create-quiz', function(req, res) {
