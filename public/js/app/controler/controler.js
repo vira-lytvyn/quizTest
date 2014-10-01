@@ -10,7 +10,7 @@ define(['can', 'model/model'], function(can, quizModel) {
 			});
 		},
 
-		"body click": function(li, event) {
+		"li click": function(li, event) {
 			console.log('Click');
 			li.trigger( 'selected' );
 		},
@@ -20,7 +20,7 @@ define(['can', 'model/model'], function(can, quizModel) {
 		}
 	});
 
-	new QuizesList(".quiz-list-ul");
+	new QuizesList('body');
 
 	var CreateQuiz = can.Control.extend({
 		defaults: { view: 'templates/create-quiz' },

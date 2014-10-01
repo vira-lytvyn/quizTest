@@ -24,5 +24,5 @@ build/Release
 # Grunt #
 /node_modules
 
-/bower_components
+/public/js/bower_components
 /data
