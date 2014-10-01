@@ -4,7 +4,13 @@ define(['can'], function(can) {
 		findOne: 'GET /quizapi/getoneitem&{id}',
 		create:  'POST /quizapi/createquiz&{id}',
 		update:  'PUT /quizapi/updatequiz&{id}',
-		destroy: 'DELETE /quizapi/deletequiz&{id}' 
+		destroy: 'DELETE /quizapi/deletequiz&{id}',
+		getsss: function() {
+			return $.ajax({
+				method: 'POST',
+				url: '/validate-new-quiz&title=' + title
+			})
+		}
 	});
 
 	return quizModel

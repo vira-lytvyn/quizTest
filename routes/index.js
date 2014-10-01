@@ -11,7 +11,7 @@ router.get('/create-quiz', function(req, res) {
 	res.render('create-quiz', {title: 'New quiz'})
 });
 
-router.post('/create-new-quiz-route', function(req, res) {
+router.post('/create-new-quiz-post', function(req, res) {
 	quizDbMethods.createNewQuiz(req, res, req.body.newQuizTitle, req.body.newQuizDescription);
 });
 
@@ -23,7 +23,7 @@ router.get('/delete-quiz&:id', function(req, res) {
 	quizDbMethods.removeQuiz(req, res, req.params.id);
 });
 
-router.post('/validateNewQuiz&:title', function(req, res) {
+router.post('/validate-new-quiz&title=:title', function(req, res) {
 	console.log('New ajax request. POST data = '+ req.params.title);
 	quizDbMethods.validateNewQuizTitle(req, res, req.params.title);
 });

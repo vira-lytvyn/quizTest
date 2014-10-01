@@ -83,10 +83,9 @@ body {
 
 .button {
 	display: inline-block;
-	width: 50%;
 	box-sizing: border-box;
 	text-align: center;
-	padding: 13px 0;
+	padding: 13px 15px;
 	text-decoration: none;
 	background: #5C9CA8;
 	color: white;
@@ -104,19 +103,6 @@ body {
 	width: 50%;
 	box-sizing: border-box;
 }
-
-.label-with-input {
-	display: block;	
-}
-	.label-with-input+.label-with-input {
-		margin-top: 15px;	
-	}
-
-	.lable-text {
-		font-size: 1.2em;
-		display: inline-block;
-		width: 50%;
-	}
 
 /*------------------home page----------------*/
 .quiz-list-container {
@@ -202,19 +188,40 @@ body {
 		.quiz-list-count:before {
 			content: 'Number of questions: ';
 		}
-
-		.mail-box {
-			float: left;
-			width: 50%;
-			color: red;
-			padding: 5px 5px 5px 0px;
-			box-sizing: border-box;
-		}
 /*----------------create quiz page------------------*/
-.new-quiz-form {
-	width: 600px;
-	margin: 0 auto;	
-}
+	.new-quiz-form {
+		width: 600px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+
+	.mail-box {
+		display: inline-block;
+		width: 20%;
+		box-sizing: border-box;
+	}
+		.mail-box.valid {
+			color: green;
+		}
+
+		.mail-box.invalid {
+			color: red;
+		}
+
+	.label-with-input {
+		display: block;
+		position: relative;
+	}
+
+	.label-with-input+.label-with-input {
+		margin-top: 15px;	
+	}
+
+	.lable-text {
+		font-size: 1.2em;
+		display: inline-block;
+		width: 25%;
+	}
 
 /*---------------create question page-------------------*/
 
@@ -222,7 +229,7 @@ body {
 @media screen and (min-width: 701px) and (max-width: 1024px) {
 	.quiz-list-item {
 		width: calc(50% - 15px);
-	}	
+	}
 }
 
 @media screen and (max-width: 700px) {
