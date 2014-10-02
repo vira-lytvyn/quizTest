@@ -19,7 +19,7 @@ define(['can', 'model/model'], function(can, quizModel) {
 		},
 
 		"#create-quiz-home-button click": function(li, event) {
-			$('.wrapper-home').hide();
+			$('.wrapper-home').addClass('hide-section');
 			new CreateQuiz('body');
 		}
 	});
@@ -27,29 +27,27 @@ define(['can', 'model/model'], function(can, quizModel) {
 	new QuizesList('body');
 
 	var CreateQuiz = can.Control.extend({
-		defaults: { view: 'templates/create-quiz', validForm: false },
-	}, {
 		"init": function(element, option) {
 			var template = can.view('templates/create-quiz', {title: 'Create quiz'});
 			$('.container').append(template);
 		},
 		
-		".new-quiz-title blur": function(el, event) {
+		".new-quiz-title blur": function(el, evt) {
+			evt.preventDefault();
 			var title = el.val(),
 					validationValue;
 
-			$.ajax({
-				method: 'POST',
-				url: '/validate-new-quiz&title=' + title
-			}).done(function(msg) {
-				if(msg) {
-					$('.mail-box').removeClass('invalid').addClass('valid').text('Title is valid!');
-					validationValue= true;
-				} else {
-					$('.mail-box').removeClass('valid').addClass('invalid').text('There are quiz with this title!');
-					validationValue = false;
-				}
-			});
+			quizModel.validate(title);
+			//.titleValidation(title);
+			// .done(function(msg) {
+			// 	if(msg) {
+			// 		$('.mail-box').removeClass('invalid').addClass('valid').text('Title is valid!');
+			// 		validationValue= true;
+			// 	} else {
+			// 		$('.mail-box').removeClass('valid').addClass('invalid').text('There are quiz with this title!');
+			// 		validationValue = false;
+			// 	}
+			// });
 
 			this.validForm = validationValue;
 			console.log(this.validForm);

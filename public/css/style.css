@@ -104,9 +104,20 @@ body {
 	box-sizing: border-box;
 }
 
+section {
+	max-height: 10000px;
+}
+
+.hide-section {
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .5s;
+}
+
 /*------------------home page----------------*/
 .quiz-list-container {
-	margin-top: 40px;		
+	margin-top: 40px;
 }
 	.quiz-list-ul {
 		padding: 0;
