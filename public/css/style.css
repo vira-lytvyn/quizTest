@@ -105,20 +105,22 @@ body {
 }
 
 section {
-	max-height: 10000px;
+	max-height: 0;
+	opacity: 0;
+	transition: all .5s;
+	overflow: hidden;
 }
 
-.hide-section {
-	opacity: 0;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .5s;
+.active-section {
+	opacity: 1;
+	max-height: 1000000px;
 }
 
 /*------------------home page----------------*/
 .quiz-list-container {
 	margin-top: 40px;
 }
+
 	.quiz-list-ul {
 		padding: 0;
 	}
@@ -151,6 +153,7 @@ section {
 			overflow: hidden;
 			transition: all .3s;
 		}
+
 			.quiz-list-item.active > .quiz-list-controllers {
 				max-height: 100px;
 			}
@@ -175,7 +178,7 @@ section {
 			color: #558A9C;
 			text-decoration: none;
 		}
-		
+
 		.quiz-list-info-container {
 			padding: 10px 5px;
 		}

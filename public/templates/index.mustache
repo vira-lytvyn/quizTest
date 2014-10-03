@@ -1,4 +1,4 @@
-<section class="wrapper-home">
+<section class="wrapper-home active-section">
 	<header>
 		<h1 class="title">{{title}}</h1>
 	</header>
@@ -19,9 +19,9 @@
 								<span class="quiz-list-count">{{questions.length}}</span>
 							</div>
 							<nav class="quiz-list-controllers">
-								<a href="#">Start test</a>
-								<a href="#">Add new question</a>
-								<a href="#">Delete quiz</a>
+								<a href="#" data-id="{{_id}}" class="start-quiz-button">Start test</a>
+								<a href="#" data-id="{{_id}}" class="add-quiz-question-button">Add new question</a>
+								<a href="#" data-id="{{_id}}" class="delete-quiz-button">Delete quiz</a>
 							</nav>
 						</li>
 				{{/quizData}}

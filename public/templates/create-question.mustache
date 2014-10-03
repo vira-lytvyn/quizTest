@@ -1,0 +1,19 @@
+<section class="wrapper-create-question active-section">
+	<header>
+		<h1 class="title">Create question for: {{title}}</h1>
+	</header>
+
+	<form action="/quizapi/create-new-question" method="POST" class="">
+		<fieldset>
+			<label>
+				<span class="lable-text">Enter question info:</span>
+				<input type="text" name="new-question-text" placeholder="Question" required="" clas="new-question-input-text white-input">
+			</label>
+		</fieldset>
+
+		<fieldset class="create-question-choices-container">
+			<h3>Enter choices:</h3>
+			<ul class="choices-container"></ul>
+		</fieldset>
+	</form>
+</section>

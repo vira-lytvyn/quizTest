@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/quizdb');
 var formidable = require('formidable');
+var bodyParser = require('body-parser');
 
 var quizSchema = mongoose.Schema({
 	title: { type: String, unique: true },
@@ -9,20 +10,23 @@ var quizSchema = mongoose.Schema({
 });
 Quiz = mongoose.model('Quiz', quizSchema);
 
-exports.createNewQuiz = function(req, res, quizTitle, quizDescription) {
+exports.createNewQuiz = function(req, res) {
+	var title = req.body.title,
+			description = req.body.description;
+
 	var newQuiz = new Quiz({
-		title : quizTitle,
-		description: quizDescription
+		title : title,
+		description: description
 	});
 
-	Quiz.find({title: quizTitle}, function(err, docs) {
+	Quiz.find({title: title}, function(err, docs) {
+		if (err) throw err
 		if (docs.length)	{
-			res.send('Quiz with this title already exist. Please go back and enter enother title!');
+			res.send(false);
 		} else {
 			newQuiz.save(function (err, newQuiz) {
 				if (err) throw err;
-				res.location('/create-question&' + newQuiz._id);
-				res.redirect('/create-question&' + newQuiz._id);
+				res.send(true);
 			});
 		}
 	});
@@ -49,18 +53,22 @@ exports.createNewQuestionRenderer = function(req, res, id) {
 	});
 }
 
-exports.removeQuiz = function(req, res, id) {
+exports.removeQuiz = function(req, res) {
+	var id = req.body.id;
 	Quiz.remove({ _id : id}, function(err) {
-		if(err) throw err
-		console.log('Item with id:' + id + 'was removed');
-		res.location('/');
-		res.redirect('/');
+		if(err) {
+			console.log(err);
+			res.send(false);
+		} else {
+			console.log('Item with id:' + id + 'was removed');
+			res.send(true);
+		}
 	});
 }
 
-exports.validateNewQuizTitle = function(req, res, newQuizTitle) {
-	console.log(newQuizTitle);
-	Quiz.find({title: newQuizTitle}, function(err, docs) {
+exports.validateNewQuizTitle = function(req, res) {
+	Quiz.find({title: req.body.title}, function(err, docs) {
+		if (err) throw err
 		if (docs.length) {
 			res.send(false);
 		} else {
